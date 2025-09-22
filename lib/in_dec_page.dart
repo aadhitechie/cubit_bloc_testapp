@@ -1,3 +1,4 @@
+import 'package:bloc_pattern/bloc/counter_bloc.dart';
 import 'package:bloc_pattern/cubit/counter_cubit.dart';
 import 'package:bloc_pattern/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,8 @@ class InDecPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit_counter = BlocProvider.of<CounterCubit>(context);
+    //final cubit_counter = BlocProvider.of<CounterCubit>(context);
+    final bloc_counter = BlocProvider.of<CounterBloc>(context);
     return  Scaffold(
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -16,14 +18,14 @@ class InDecPage extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: () {
-              cubit_counter.increment();
+              bloc_counter.add(CounterInc());
             },
             child: Icon(Icons.add),
           ),
           SizedBox(height: 5),
           FloatingActionButton(
             onPressed: () {
-              cubit_counter.decrement();
+              bloc_counter.add(CounterDec());
             },
             child: Icon(Icons.minimize),
           ),          SizedBox(height: 5),

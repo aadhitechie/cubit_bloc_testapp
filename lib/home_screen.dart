@@ -1,3 +1,4 @@
+import 'package:bloc_pattern/bloc/counter_bloc.dart';
 import 'package:bloc_pattern/cubit/counter_cubit.dart';
 import 'package:bloc_pattern/in_dec_page.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit_counter = BlocProvider.of<CounterCubit>(context);
+    //final cubit_counter = BlocProvider.of<CounterCubit>(context);
+    //final bloc_counter = BlocProvider.of<CounterBloc>(context);
 
     return Scaffold(
       body: Column(
@@ -16,8 +18,8 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: BlocBuilder(
-              bloc: cubit_counter,
+            child: BlocBuilder<CounterBloc,int>(
+              // bloc: bloc_counter,
               builder: (context, state) {
                 return Text('Counter number : $state');
               },
